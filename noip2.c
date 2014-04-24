@@ -542,7 +542,7 @@ void Usage()
 	fprintf(stderr, "         -x executable    use supplied executable\n");
 	fprintf(stderr, "         -c config_file   use alternate data path\n");
 #ifdef DEBUG
-        fprintf(stderr, "         -d               increase debug verbosity\n");
+  fprintf(stderr, "         -d               increase debug verbosity\n");
 	fprintf(stderr, "         -D processID     toggle debug flag for PID\n");
 #endif
 	fprintf(stderr, "         -i IPaddress     use supplied address\n");
@@ -888,6 +888,7 @@ void getip(char *p, char *device)
 	sin = (struct sockaddr_in *)&ifr.ifr_addr;
 	z = sin->sin_addr;
 	strcpy(p, inet_ntoa(z));
+  Msg("get IP address is %s\n", p);
 #ifdef DEBUG
 	if (my_instance ? my_instance->debug : debug)
 	    fprintf(stderr,"! Our IP address is %s\n", p);
