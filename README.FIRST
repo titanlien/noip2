@@ -292,3 +292,27 @@ Examine the file noip2.out.  Send it to me if you're still puzzled.
 
 	johna@onevista.com  January 2004
 
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+add a upstart for ubuntu auto launch
+
+# Upstart noip Configuration
+description     "launch noip2"
+author          "titan.lien"
+ 
+start on (net-device-up
+          and local-filesystems
+          and runlevel [2345])
+           
+stop on runlevel [016]
+ 
+expect fork
+respawn limit 14 86400 # re-try 14 times per day
+
+script
+  echo "Starting noip2."
+  /usr/local/bin/noip2
+end script
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
