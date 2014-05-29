@@ -1,15 +1,3 @@
-This file describes noip2, a second-generation Linux client for the 
-no-ip.com dynamic DNS service.
-
-NEW:	This code will build and run on Solaris/Intel and BSD also.
-	Edit the Makefile for Solaris and the various BSDs.
-	For BSD users wanting to use a tun interface, see below.
-	Let me know about any other changes needed for noip2 to 
-	operate correctly on your non-Linux OS.
-	Mac OS X is a BSD variant. 
-
-Please read this short file before using noip2. 
-
 ###########################################################################
 HOW TO BUILD AN EXECUTABLE FOR YOUR SYSTEM
 
@@ -33,7 +21,7 @@ See below if you can't become root or can't write in /usr/local/*.
 HOW TO USE THE CLIENT WITHOUT READING THE REST OF THIS TEXT
 
 Usual operation?
-/usr/local/bin/noip2 -C			configure a client
+/usr/local/bin/noip2 -C	-F		create a configure for a client, force NAT off
 /usr/local/bin/noip2			run a client
 /usr/local/bin/noip2 -S			display info about running clients
 /usr/local/bin/noip2 -D pid		toggle the debug state for client pid
