@@ -30,6 +30,8 @@ install: ${TGT}
 	cp ${TGT} ${BINDIR}/${TGT}
 	${BINDIR}/${TGT} -C -c /tmp/no-ip2.conf
 	mv /tmp/no-ip2.conf ${CONFDIR}/no-ip2.conf
+	sudo cp ./noip2.conf /etc/init/
+	sudo service noip2 start
 
 package: ${TGT}
 	rm  -f *.bak
