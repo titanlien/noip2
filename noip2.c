@@ -2511,14 +2511,14 @@ void autoconf()
 	    Msg(CMSG27);
 	    return;
 	}
-        sprintf(buffer, "GET http://%s/\r\n\r\n", NOIP_IP_SCRIPT);
+        sprintf(buffer, "GET http://%s/ HTTP/1.0\r\n%s\r\n\r\n", NOIP_IP_SCRIPT,USER_AGENT);
         if ((x = converse_with_web_server()) <= 0) {
             handle_dynup_error(x);
 	    return;
 	}
-        p = buffer;
+        p = strrchr(buffer,'\n') + 1;
         if ((*p >= '0') && (*p <= '9')) {	// extract IP address
-	    if (!validate_IP_addr(buffer, external_ip)) {
+	    if (!validate_IP_addr(p, external_ip)) {
 		Msg(CMSG44, p);
 		exit(1);
 	    }
